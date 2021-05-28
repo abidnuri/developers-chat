@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <h2>Developers Chat App</h2>
+      <h1>Awesome Chat App</h1>
     </div>
   );
 }
