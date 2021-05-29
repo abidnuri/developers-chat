@@ -37,7 +37,6 @@ const Login = () => {
                 </Grid>
             </Grid>
         </div>
-
     );
 };
 
