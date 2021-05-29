@@ -1,7 +1,20 @@
-import React from 'react';
+import { IconButton } from '@material-ui/core';
+import MicNoneIcon from '@material-ui/icons/MicNone';
+import React, { useState } from 'react';
 import './Chat.css'
 
 const Chat = () => {
+
+    const [input, setInput] = useState("");
+
+    const sendMessage = (e) =>{
+        e.preventDefault();
+
+        // firebase
+
+        setInput("");
+    }
+
     return (
         <div className="chat">
             <div className="chat_header">
@@ -9,9 +22,27 @@ const Chat = () => {
                 <strong>Details</strong>
             </div>
             {/*chat message*/}
+            <div className="chat_messages">
+                <h2>Message </h2>
+                <h2>Message </h2>
+            </div>
 
             {/*chat input*/}
+            <div className="chat_input">
+                <form>
+                    <input 
+                        value={input} 
+                        onChange={(e) => setInput(e.target.value)} 
+                        placeholder="Developers chat" 
+                        type="text"
+                    />
+                    <button onClick={sendMessage}>Send Message</button>
+                </form>
 
+                <IconButton>
+                    <MicNoneIcon className="chat_mic"/>
+                </IconButton>
+            </div>
         </div>
     );
 };
