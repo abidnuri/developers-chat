@@ -1,0 +1,6 @@
+.login-chat{
+    text-align: center;
+}
+.login-chat > button {
+    margin-top: 25px;
+}
