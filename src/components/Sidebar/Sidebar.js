@@ -1,4 +1,4 @@
-import { Avatar, IconButton } from '@material-ui/core';
+import { Avatar, Button, IconButton } from '@material-ui/core';
 import { RateReviewOutlined, Search } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -35,9 +35,9 @@ const Sidebar = () => {
 
     return (
         <div className='sidebar'>
-            <h2>I am sidebar</h2>
+        <Button onClick={() => auth.signOut()} variant="contained" color="secondary">Logout</Button>
             <div className="sidebar_header">
-                <Avatar onClick={() => auth.signOut()} src={user.photo} className="sidebar_avatar" />
+                <Avatar src={user.photo} className="sidebar_avatar" />
                 <div className="sidebar_input">
                     <Search />
                     <input placeholder='Search'></input>
