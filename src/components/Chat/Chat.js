@@ -16,36 +16,36 @@ const Chat = () => {
     const chatId = useSelector(selectChatId);
     const [messages, setMessages] = useState([]);
 
-    // useEffect(() => {
-    //     if (chatId) {
-    //         db.collection("chats")
-    //             .doc(chatId)
-    //             .collection("messages")
-    //             .orderBy("timestamp", "desc")
-    //             .onSnapshot((snapshot) =>
-    //                 setMessages(
-    //                     snapshot.docs.map((doc) => ({
-    //                         id: doc.id,
-    //                         data: doc.data()
-    //                     }))
-    //                 )
-    //             );
-    //     }
-    // }, [chatId])
+    useEffect(() => {
+        if (chatId) {
+            db.collection("chats")
+                .doc(chatId)
+                .collection("messages")
+                .orderBy("timestamp", "desc")
+                .onSnapshot((snapshot) =>
+                    setMessages(
+                        snapshot.docs.map((doc) => ({
+                            id: doc.id,
+                            data: doc.data()
+                        }))
+                    )
+                );
+        }
+    }, [chatId])
 
 
     const sendMessage = (e) => {
         e.preventDefault();
 
-        // db.collection("chats").doc(chatId).collection("messages").add({
-        //     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        //     message: input,
-        //     uid: user.uid,
-        //     photo: user.photo,
-        //     email: user.email,
-        //     displayName: user.displayName,
+        db.collection("chats").doc(chatId).collection("messages").add({
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            message: input,
+            uid: user.uid,
+            photo: user.photo,
+            email: user.email,
+            displayName: user.displayName,
 
-        // });
+        });
 
         setInput("");
     }
@@ -58,8 +58,8 @@ const Chat = () => {
             </div>
             {/*chat message*/}
             <div className="chat_messages">
-                {messages.map(({ id, data }) => (
-                    <Messages key={id} content={data} />
+                {messages.map(({id, data}) =>(
+                    <Messages key={id} contents={data} />
                 ))}
             </div>
 
