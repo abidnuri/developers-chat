@@ -42,4 +42,16 @@
 }
 .chat_messages{
     flex: 1;
+    overflow: scroll;
 }
+
+/* hide sidebar for chrome, safari, opera*/
+.chat_messages::webkit-scrollbar{
+    display: none;
+  }
+  
+  /* hide scrollbar for IE, edge and firefox */
+  .chat_messages{
+    -ms-overflow-style: none; /*IE and edge*/
+    scrollbar-width:none; /*firefox*/
+  }
