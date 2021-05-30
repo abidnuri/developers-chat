@@ -7,6 +7,8 @@ import './Chat.css'
 const Chat = () => {
 
     const [input, setInput] = useState("");
+    
+
 
     const sendMessage = (e) =>{
         e.preventDefault();
